@@ -38,8 +38,10 @@ class Trader:
         scraper = CmcScraper('lusd', dates[1], dates[0])
 
         # Pandas dataFrame for the same data
-        print(scraper.get_dataframe())
-        return scraper.get_dataframe()
+        try: 
+            return scraper.get_dataframe()
+        except:
+            return None
 
     def get_dates(self, days_ago, dt):
         dates = []
@@ -100,9 +102,9 @@ class Trader:
             low_val[2] = self.ten_day_moving_average_low
 
         # Use data from 3 days ago, 2 days ago, 1 day ago
-        self.moving_average_high = sum(high_val) / 3
-        self.moving_average_low = sum(low_val) / 3
-        self.moving_average_open = sum(open_val) / 3
+        self.moving_average_high = sum(high_val[:3]) / 3
+        self.moving_average_low = sum(low_val[:3]) / 3
+        self.moving_average_open = sum(open_val[:3]) / 3
 
         # Calculate the buying point
         buy_point = self.moving_average_low * self.percentage_of_moving_average_low
@@ -138,10 +140,13 @@ class Trader:
 
         while self.running:
             # Get the dates from which to get the data
-            data = self.get_crypto_data(self.get_dates(days_ago=0, dt=3))
+            data = self.get_crypto_data(self.get_dates(days_ago=0, dt=10))
 
-            # Process the data 
-            self.calculate_moving_average(data.get('Open'), data.get('High'), data.get('Low'))
+            if data != None:
+                # Process the data 
+                self.calculate_moving_average(data.get('Open'), data.get('High'), data.get('Low'))
+            else:
+                print('[Skipped cycle]: error getting data')
 
             time.sleep(60)
 
