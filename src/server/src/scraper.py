@@ -36,8 +36,7 @@ def get_gas_fees(exchange):
 
     for r in row:
         if exchange == r.find_all_next('td')[2].string:
-            print(r.find_all_next('td')[6])
+            print(r.find_all_next('td')[6].string.replace('$', ''))
+            break
 
     pass
-
-get_gas_fees('Curve')
