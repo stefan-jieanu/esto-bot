@@ -24,6 +24,20 @@ def get_current_usd():
     html = requests.get('https://coinmarketcap.com/currencies/ethereum/').content
 
     soup = BeautifulSoup(html, 'html.parser')
-    usd_price = soup.find_all('div', {'class': 'priceValue___11gHJ'})[0].string
+    usd_price = soup.find_all('div', {'class': 'priceValue'})[0].string
 
     return float(usd_price.replace('$', '').replace(',', ''))
+
+def get_gas_fees(exchange):
+    html = requests.get('https://crypto.com/defi/dashboard/gas-fees').content
+
+    soup = BeautifulSoup(html, 'html.parser')
+    row = soup.find_all('tr', {'class': 'DefiTableRow__TableRow-aqcgpn-2 keNjLW'})
+
+    for r in row:
+        if exchange == r.find_all_next('td')[2].string:
+            print(r.find_all_next('td')[6])
+
+    pass
+
+get_gas_fees('Curve')

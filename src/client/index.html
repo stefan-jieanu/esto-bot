@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' ws: https:; script-src 'self' https:">
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self' ws: https:; script-src 'self' https:">
+    <title>Hello World!</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+  </head>
+  <body>
+    <br>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">System status</div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <p class="card-text">Server connection: <span class="status-good">&bull; OK</span></p>
+                </div>
+                <div class="col">
+                  <p class="card-text">Trader status: <span class="status-fail">&bull; Not running</span></p>
+                </div>
+                <div class="col">
+                  <p class="card-text">Other thing: <span class="status-warn">&bull; On hold</span></p>
+                </div>
+                <div class="col">
+                  &nbsp;
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">Trader Info</div>
+            <div class="card-body">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <h5 class="card-title">Stats</h5>
+                  <div class="row">
+                    <div class="col">
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">LUSD price: </span>
+                        <input type="text" class="form-control" id="current_traded_coint_price" disabled>
+                      </div>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">Moving avg high: </span>
+                        <input type="text" class="form-control" id="moving_average_high" disabled>
+                      </div>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">Moving avg low: &nbsp;</span>
+                        <input type="text" class="form-control" id="moving_average_low" disabled>
+                      </div>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">10d moving avg high: </span>
+                        <input type="text" class="form-control" id="ten_day_moving_average_high" disabled>
+                      </div>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">10d moving avg low: &nbsp;</span>
+                        <input type="text" class="form-control" id="ten_day_moving_average_low" disabled>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">High coefficient: </span>
+                        <input type="text" class="form-control" id="high_coefficient" disabled>
+                      </div><div class="input-group mb-3">
+                        <span class="input-group-text">Low coefficient: &nbsp;</span>
+                        <input type="text" class="form-control" id="low_coefficient" disabled>
+                      </div><div class="input-group mb-3">
+                        <span class="input-group-text">Buy point: </span>
+                        <input type="text" class="form-control" id="buy_point" disabled>
+                      </div><div class="input-group mb-3">
+                        <span class="input-group-text">Sell point: </span>
+                        <input type="text" class="form-control" id="sell_point" disabled>
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                </li>
+                <li class="list-group-item">
+                  <br>
+                  <h5 class="card-title">Settings</h5>
+                  <div class="row">
+                    <div class="col">
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">Discard buy point:</span>
+                        <input type="text" class="form-control" id="discard_buy_point">
+                      </div>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">Discard sell point: </span>
+                        <input type="text" class="form-control" id="discard_sell_point">
+                      </div>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">New buy point: </span>
+                        <input type="text" class="form-control" id="new_buy_point">
+                      </div>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">New sell point: </span>
+                        <input type="text" class="form-control" id="new_sell_point">
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">Buy coefficient: </span>
+                        <input type="text" class="form-control" id="buy_coefficient">
+                      </div>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">Sell coefficient: </span>
+                        <input type="text" class="form-control" id="sell_coefficient">
+                      </div>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">Manual buy point: </span>
+                        <input type="text" class="form-control" id="manual_buy_point">
+                      </div>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">Manual sell point: </span>
+                        <input type="text" class="form-control" id="manual_sell_point">
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">Max buy point: &nbsp;</span>
+                        <input type="text" class="form-control" id="max_buy_point">
+                      </div>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">Max gas fees %: </span>
+                        <input type="text" class="form-control" id="max_gas_fees">
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                  <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirm-settings-modal">Save</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">Wallet Info</div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <p class="card-text">USDT: 1000</p>
+                </div>
+                <div class="col">
+                  <p class="card-text">LUSD: 1000</p>
+                </div>
+                <div class="col">
+                  <p class="card-text">ETH: 1000 (13000$)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">Gas Fees (Uniswap)</div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <p class="card-text">Slow: 0.1%</p>
+                </div>
+                <div class="col">
+                  <p class="card-text">Medium: 0.3%</p>
+                </div>
+                <div class="col">
+                  <p class="card-text">Fast: 0.5%</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+
+    <!-- Confirm bot settings modal -->
+    <div class="modal fade" id="confirm-settings-modal" tabindex="-1" aria-labelledby="confirm-settings-modal-label" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="confirm-settings-modal-label">Save trader settings?</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="save-trader-settings">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./src/ui.js"></script>
+    <script src="./src/socket_handler.js"></script>
+    <script src="./src/renderer.js"></script>
+  </body>
+</html>

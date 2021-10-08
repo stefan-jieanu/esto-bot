@@ -1,0 +1,23 @@
+{
+    "trader_info": {
+        "discard_buy_point": "0.98",
+        "discard_sell_point": "1.03",
+        "new_buy_point": "0.9988",
+        "new_sell_point": "1.02",
+        "max_buy_point": "1",
+        "buy_coefficient": "0.996",
+        "sell_coefficient": "1.004",
+        "manual_buy_point": "0",
+        "manual_sell_point": "0",
+        "max_gas_fees": "0.01",
+        "current_traded_coint_price": 0.99226956401209,
+        "moving_average_high": 1.0206329111874166,
+        "moving_average_low": 0.9750773869595742,
+        "ten_day_moving_average_high": 1.0166951007370102,
+        "ten_day_moving_average_low": 0.9629844433424826,
+        "high_coefficient": 1.2,
+        "low_coefficient": 0.4,
+        "buy_point": 0.9988,
+        "sell_point": 1.0247154428321663
+    }
+}

@@ -1,0 +1,26 @@
+html, body {
+    background-color: #f8f9fa;
+}
+
+.card-text {
+    margin-bottom: 0.5rem;
+}
+
+.status-good {
+    color: #198754;
+    font-weight: bold;
+}
+
+.status-warn {
+    color: #ffc107;
+    font-weight: bold;
+}
+
+.status-fail {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+.form-control:disabled {
+    background-color: #ffffff !important;
+}

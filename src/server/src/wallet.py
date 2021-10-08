@@ -1,5 +1,5 @@
 import json
-import coinmarketscraper
+import scraper
 
 class Wallet:
     def __init__(self):
@@ -14,7 +14,7 @@ class Wallet:
         self.update_usd_balance()
 
     def update_usd_balance(self):
-        price_eth = coinmarketscraper.get_current_usd()
+        price_eth = scraper.get_current_usd()
         self.balance['ETH_IN_USD'] = self.balance['ETH'] * price_eth
 
     def serialize(self):
