@@ -165,6 +165,12 @@ class Trader:
         self.buy_point = buy_point
         self.sell_point = selling_point
 
+        # Change the buy_point and sell_point if they are set manually
+        if self.manual_buy_point != 0:
+            self.buy_point = self.manual_buy_point
+        if self.manual_sell_point != 0:
+            self.sell_point = self.manual_sell_point
+        
         # Buy condition
         if buy_point > self.moving_average_low and self.wallet.balance['USDT'] > self.wallet.balance['LUSD']:
             if self.current_traded_coin_price <= buy_point:
