@@ -152,6 +152,8 @@ class Trader:
         buy_point = self.moving_average_low * self.buy_coefficient
         selling_point = self.moving_average_high * self.sell_coefficient
 
+        #TODO Get the gas fees in here somewhere do to something
+
         # clamp buy point
         if buy_point <= self.discard_buy_point or buy_point > self.max_buy_point:
             buy_point = self.new_buy_point
