@@ -242,7 +242,7 @@ class Trader:
         time_now = date_time_now.split(' ')[1].split('.')[0]
         content = f'{date_now},{time_now},usdt: {self.wallet.balance["USDT"]}, lusd: {self.wallet.balance["LUSD"]}, gas fees fast: {self.gas}'
 
-        self.emailer.send(['stefanalexjieanu@gmail.com'], 'Bot trade found!', content)
+        self.emailer.send('Bot trade found!', content)
     
     def log_trade(self):
         date_time_now = str(datetime.now())
