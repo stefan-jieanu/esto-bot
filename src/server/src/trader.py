@@ -170,6 +170,10 @@ class Trader:
             self.buy_point = self.manual_buy_point
         if self.manual_sell_point != 0:
             self.sell_point = self.manual_sell_point
+
+        # Safeguard for gas fees 
+        if scraper.get_gas_fees() <= self.max_gas_fees * (self.wallet.balance['LUSD'] + self.wallet.balance['USDT']):
+            return
         
         # Buy condition
         if buy_point > self.moving_average_low and self.wallet.balance['USDT'] > self.wallet.balance['LUSD']:

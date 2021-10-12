@@ -34,9 +34,10 @@ def get_gas_fees(exchange):
     soup = BeautifulSoup(html, 'html.parser')
     row = soup.find_all('tr', {'class': 'DefiTableRow__TableRow-aqcgpn-2 keNjLW'})
 
+    fees = 0
     for r in row:
         if exchange == r.find_all_next('td')[2].string:
-            print(r.find_all_next('td')[6].string.replace('$', ''))
+            fees = r.find_all_next('td')[6].string[1:]
             break
 
-    pass
+    return float(fees)
