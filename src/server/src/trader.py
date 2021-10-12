@@ -9,6 +9,7 @@ from scipy import stats
 from cryptocmd import CmcScraper
 from datetime import datetime, timedelta
 from log import Log
+from emailer import Emailer
 
 # DEFAULT PARAMETERS
 # self.high_coefficient = 1.2
@@ -60,6 +61,8 @@ class Trader:
         self.manual_sell_point = 0
         self.max_gas_fees = 0.01
 
+        self.emailer = Emailer()
+
     def assign_server(self, server):
         # Assign the server which will be used to send messages
         self.server = server
@@ -103,6 +106,10 @@ class Trader:
         # Send a notification to the client of the trade
         # self.server.send('{trade}')
 
+        # Send email that a trade is available
+        self.emailer.send(['stefanalexjieanu@gmail.com'], 'Bot trade found!', 
+            f'More info here in the future')
+        
         # Log the trade to the file
         self.log_trade()
 
