@@ -107,8 +107,7 @@ class Trader:
         # self.server.send('{trade}')
 
         # Send email that a trade is available
-        self.emailer.send(['stefanalexjieanu@gmail.com'], 'Bot trade found!', 
-            f'More info here in the future')
+        self.email_trade()
         
         # Log the trade to the file
         self.log_trade()
@@ -179,7 +178,8 @@ class Trader:
             self.sell_point = self.manual_sell_point
 
         # Safeguard for gas fees 
-        if scraper.get_gas_fees() <= self.max_gas_fees * (self.wallet.balance['LUSD'] + self.wallet.balance['USDT']):
+        self.gas_fees_fast = scraper.get_gas_fees()
+        if self.gas_fees_fast <= self.max_gas_fees * (self.wallet.balance['LUSD'] + self.wallet.balance['USDT']):
             return
         
         # Buy condition
@@ -236,6 +236,14 @@ class Trader:
         # Save the new settings to the config file
         self.save_settings_to_file()
 
+    def email_trade(self):
+        date_time_now = str(datetime.now())
+        date_now = date_time_now.split(' ')[0]
+        time_now = date_time_now.split(' ')[1].split('.')[0]
+        content = f'{date_now},{time_now},usdt: {self.wallet.balance["USDT"]}, lusd: {self.wallet.balance["LUSD"]}, gas fees fast: {self.gas}'
+
+        self.emailer.send(['stefanalexjieanu@gmail.com'], 'Bot trade found!', content)
+    
     def log_trade(self):
         date_time_now = str(datetime.now())
         date_now = date_time_now.split(' ')[0]
