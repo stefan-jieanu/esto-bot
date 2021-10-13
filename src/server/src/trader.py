@@ -178,7 +178,7 @@ class Trader:
             self.sell_point = self.manual_sell_point
 
         # Safeguard for gas fees 
-        self.gas_fees_fast = scraper.get_gas_fees()
+        self.gas_fees_fast = scraper.get_gas_fees('Curve')
         if self.gas_fees_fast <= self.max_gas_fees * (self.wallet.balance['LUSD'] + self.wallet.balance['USDT']):
             return
         
