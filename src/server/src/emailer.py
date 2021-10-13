@@ -6,7 +6,7 @@ class Emailer():
         self.smtp_server_domain_name = 'smtp.gmail.com'
         self.sender_mail = 'estobotalerts@gmail.com'
         self.password = '77NjcLab8.c'
-        self.emails = ['stefanalexjieanu@gmail.com']
+        self.emails = ['stefanalexjieanu@gmail.com', 'quentincvx@gmail.com']
 
     def send(self, subject, content):
         ssl_context = ssl.create_default_context()
