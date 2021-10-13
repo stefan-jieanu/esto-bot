@@ -279,11 +279,14 @@ class Trader:
             # Get the dates from which to get the data
             data = self.get_crypto_data(self.get_dates(start_date=0, dt=10))
 
-            if not data.empty:
-                # Process the data 
-                self.trade_model(data.get('Open'), data.get('High'), data.get('Low'))
+            if data != None:
+                if not data.empty:
+                    # Process the data 
+                    self.trade_model(data.get('Open'), data.get('High'), data.get('Low'))
+                else:
+                    Log.debug('error getting data')
             else:
-                print('[Skipped cycle]: error getting data')
+                Log.debug('error getting data')
 
             time.sleep(60)
 
