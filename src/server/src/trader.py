@@ -1,6 +1,8 @@
 import json
 import threading
 import time
+
+import pandas
 import scraper
 import wallet
 from datetime import datetime
@@ -75,7 +77,7 @@ class Trader:
         try: 
             return scraper.get_dataframe()
         except:
-            return None
+            return pandas.DataFrame().empty
 
     def get_dates(self, start_date, dt):
         dates = []
@@ -279,12 +281,9 @@ class Trader:
             # Get the dates from which to get the data
             data = self.get_crypto_data(self.get_dates(start_date=0, dt=10))
 
-            if data != None:
-                if not data.empty:
-                    # Process the data 
-                    self.trade_model(data.get('Open'), data.get('High'), data.get('Low'))
-                else:
-                    Log.debug('error getting data')
+            if not data.empty:
+                # Process the data 
+                self.trade_model(data.get('Open'), data.get('High'), data.get('Low'))
             else:
                 Log.debug('error getting data')
 
